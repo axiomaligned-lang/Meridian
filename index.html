@@ -300,11 +300,12 @@
       <p>If it can be manufactured, sourced, imported, or delivered — it's in range. Tell us what you need and where it needs to go. We'll research suppliers, obtain quotations, and come back with a plan.</p>
       <p>Institutional buyers — cities, school systems, agencies — reach out directly for procurement-scale sourcing.</p>
     </div>
-    <form class="reveal" onsubmit="event.preventDefault(); this.querySelector('.submit-btn').textContent='Request Received'; this.querySelector('.submit-btn').disabled=true;">
-      <div class="field"><label>Name</label><input type="text" required></div>
-      <div class="field"><label>Company / Organization</label><input type="text"></div>
-      <div class="field"><label>Email</label><input type="email" required></div>
-      <div class="field"><label>What are you sourcing?</label><textarea required placeholder="Product, quantity, target market, timeline..."></textarea></div>
+    <form id="sourcing-form" class="reveal">
+      <div class="field"><label>Name</label><input type="text" name="name" required></div>
+      <div class="field"><label>Company / Organization</label><input type="text" name="company"></div>
+      <div class="field"><label>Email</label><input type="email" name="email" required></div>
+      <div class="field"><label>What are you sourcing?</label><textarea name="details" required placeholder="Product, quantity, target market, timeline..."></textarea></div>
+      <div id="form-status"></div>
       <button class="submit-btn" type="submit">Submit Request</button>
     </form>
   </div>
@@ -364,6 +365,46 @@
   }
   window.addEventListener('scroll', updateRoute);
   window.addEventListener('load', updateRoute);
+</script>
+
+<script>
+  document.getElementById('sourcing-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const status = document.getElementById('form-status');
+    const btn = form.querySelector('.submit-btn');
+
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    status.textContent = '';
+    status.style.color = '';
+
+    try {
+      const res = await fetch('/api/send-inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name.value,
+          company: form.company.value,
+          email: form.email.value,
+          details: form.details.value
+        })
+      });
+
+      if (res.ok) {
+        status.textContent = "Your request has been sent. We’ll be in touch soon.";
+        status.style.color = 'var(--gold)';
+        btn.textContent = 'Request Received';
+      } else {
+        throw new Error('server');
+      }
+    } catch {
+      status.textContent = 'Something went wrong. Please try again or email us directly.';
+      status.style.color = '#c0392b';
+      btn.disabled = false;
+      btn.textContent = 'Submit Request';
+    }
+  });
 </script>
 
 </body>
