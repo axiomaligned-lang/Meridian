@@ -258,32 +258,35 @@
         <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
         <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
       </filter>
-      <path id="route-a" d="M-20,420 C120,380 200,180 380,200 C520,215 580,320 720,280 C840,245 920,160 1020,140"/>
-      <path id="route-b" d="M-20,300 C80,260 180,100 340,130 C480,155 560,270 700,230 C820,195 930,280 1020,320"/>
-      <path id="route-c" d="M-20,520 C100,490 220,340 400,310 C560,285 640,400 800,360 C900,335 960,240 1020,220"/>
     </defs>
-    <!-- route paths — invisible, used only for motion -->
-    <use href="#route-a" fill="none" stroke="none"/>
-    <use href="#route-b" fill="none" stroke="none"/>
-    <use href="#route-c" fill="none" stroke="none"/>
-    <!-- pulse A -->
-    <circle r="5" fill="#e8c874" filter="url(#glow)">
-      <animateMotion dur="7s" begin="0s" repeatCount="indefinite" rotate="auto">
-        <mpath href="#route-a"/>
-      </animateMotion>
-    </circle>
-    <!-- pulse B -->
-    <circle r="4" fill="#c9a24b" filter="url(#glow)">
-      <animateMotion dur="9s" begin="1.5s" repeatCount="indefinite" rotate="auto">
-        <mpath href="#route-b"/>
-      </animateMotion>
-    </circle>
-    <!-- pulse C -->
-    <circle r="4.5" fill="#e8c874" filter="url(#glow)">
-      <animateMotion dur="8s" begin="3s" repeatCount="indefinite" rotate="auto">
-        <mpath href="#route-c"/>
-      </animateMotion>
-    </circle>
+    <!-- dim base lines — always visible, tracing photo routes from globe cluster -->
+    <path d="M280,340 C360,290 480,190 640,145 C780,105 900,95 1020,90"
+          fill="none" stroke="#c9a24b" stroke-width="1" opacity="0.25"/>
+    <path d="M280,340 C420,325 560,305 710,295 C850,285 950,285 1020,290"
+          fill="none" stroke="#c9a24b" stroke-width="1" opacity="0.25"/>
+    <path d="M280,340 C370,375 490,415 650,435 C790,455 910,455 1020,450"
+          fill="none" stroke="#c9a24b" stroke-width="1" opacity="0.25"/>
+    <!-- glowing pulse — route A (upper arc, 7s) -->
+    <path d="M280,340 C360,290 480,190 640,145 C780,105 900,95 1020,90"
+          fill="none" stroke="#e8c874" stroke-width="2" stroke-dasharray="60 900"
+          filter="url(#glow)">
+      <animate attributeName="stroke-dashoffset" from="0" to="-960"
+               dur="7s" repeatCount="indefinite"/>
+    </path>
+    <!-- glowing pulse — route B (mid arc, 9s) -->
+    <path d="M280,340 C420,325 560,305 710,295 C850,285 950,285 1020,290"
+          fill="none" stroke="#e8c874" stroke-width="2" stroke-dasharray="60 900"
+          filter="url(#glow)">
+      <animate attributeName="stroke-dashoffset" from="0" to="-960"
+               dur="9s" repeatCount="indefinite"/>
+    </path>
+    <!-- glowing pulse — route C (lower arc, 8s) -->
+    <path d="M280,340 C370,375 490,415 650,435 C790,455 910,455 1020,450"
+          fill="none" stroke="#e8c874" stroke-width="2" stroke-dasharray="60 900"
+          filter="url(#glow)">
+      <animate attributeName="stroke-dashoffset" from="0" to="-960"
+               dur="8s" repeatCount="indefinite"/>
+    </path>
   </svg>
 </section>
 
