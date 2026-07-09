@@ -260,28 +260,31 @@
       </filter>
     </defs>
     <!-- dim base lines — always visible, tracing photo routes from globe cluster -->
-    <path d="M280,340 C360,290 480,190 640,145 C780,105 900,95 1020,90"
+    <!-- route A: upper arc → Europe (~650,280) -->
+    <path d="M280,340 C380,315 510,280 650,280"
           fill="none" stroke="#c9a24b" stroke-width="1" opacity="0.25"/>
-    <path d="M280,340 C420,325 560,305 710,295 C850,285 950,285 1020,290"
+    <!-- route B: mid arc → central Asia (~800,320) -->
+    <path d="M280,340 C430,332 620,318 800,320"
           fill="none" stroke="#c9a24b" stroke-width="1" opacity="0.25"/>
-    <path d="M280,340 C370,375 490,415 650,435 C790,455 910,455 1020,450"
+    <!-- route C: lower arc → east Asia/Pacific (~900,380) -->
+    <path d="M280,340 C420,348 660,368 900,380"
           fill="none" stroke="#c9a24b" stroke-width="1" opacity="0.25"/>
-    <!-- glowing pulse — route A (upper arc, 7s) -->
-    <path d="M280,340 C360,290 480,190 640,145 C780,105 900,95 1020,90"
+    <!-- glowing pulse — route A (upper arc → Europe, 7s) -->
+    <path d="M280,340 C380,315 510,280 650,280"
           fill="none" stroke="#e8c874" stroke-width="2" stroke-dasharray="60 900"
           filter="url(#glow)">
       <animate attributeName="stroke-dashoffset" from="0" to="-960"
                dur="7s" repeatCount="indefinite"/>
     </path>
-    <!-- glowing pulse — route B (mid arc, 9s) -->
-    <path d="M280,340 C420,325 560,305 710,295 C850,285 950,285 1020,290"
+    <!-- glowing pulse — route B (mid arc → central Asia, 9s) -->
+    <path d="M280,340 C430,332 620,318 800,320"
           fill="none" stroke="#e8c874" stroke-width="2" stroke-dasharray="60 900"
           filter="url(#glow)">
       <animate attributeName="stroke-dashoffset" from="0" to="-960"
                dur="9s" repeatCount="indefinite"/>
     </path>
-    <!-- glowing pulse — route C (lower arc, 8s) -->
-    <path d="M280,340 C370,375 490,415 650,435 C790,455 910,455 1020,450"
+    <!-- glowing pulse — route C (lower arc → east Asia/Pacific, 8s) -->
+    <path d="M280,340 C420,348 660,368 900,380"
           fill="none" stroke="#e8c874" stroke-width="2" stroke-dasharray="60 900"
           filter="url(#glow)">
       <animate attributeName="stroke-dashoffset" from="0" to="-960"
