@@ -291,7 +291,7 @@
     <a href="#about">Philosophy</a>
     <a href="#capabilities">Capabilities</a>
     <a href="#industries">Industries</a>
-    <a href="#inventory">Inventory</a>
+    <a href="#inventory" id="nav-inventory">Inventory</a>
     <a href="#sourcing">Sourcing</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -556,6 +556,15 @@
     try {
       const res = await fetch('/data/inventory.json');
       const items = await res.json();
+
+      const navLink = document.getElementById('nav-inventory');
+      if (items.length === 0) {
+        document.getElementById('inventory').style.display = 'none';
+        if (navLink) navLink.style.display = 'none';
+        return;
+      }
+      if (navLink) navLink.style.display = '';
+      document.getElementById('inventory').style.display = '';
 
       const filtersEl = document.getElementById('inventory-filters');
       const gridEl = document.getElementById('inventory-grid');
