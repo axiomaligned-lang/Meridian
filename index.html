@@ -53,7 +53,21 @@
     transition:color 0.3s ease;
   }
   nav a:hover{color:var(--gold-bright);}
-  @media (max-width:760px){ nav{display:none;} }
+  .menu-toggle{display:none;}
+  @media (max-width:760px){
+    .menu-toggle{
+      display:block; background:none; border:none;
+      color:var(--gold-bright); font-size:1.6rem; cursor:pointer;
+      position:relative; z-index:101;
+    }
+    nav{
+      display:flex; position:fixed; top:0; right:0; height:100vh; width:78vw; max-width:320px;
+      background:var(--void-2); flex-direction:column; align-items:flex-start;
+      gap:2rem; padding:100px 2rem 2rem; transform:translateX(100%);
+      transition:transform 0.35s ease; z-index:99;
+    }
+    nav.open{transform:translateX(0);}
+  }
 
   /* ---------- ROUTE LINE (signature element) ---------- */
   #route-line{
@@ -181,8 +195,34 @@
     font-family:var(--mono); font-size:0.78rem; letter-spacing:0.03em;
     border:1px solid var(--line); padding:0.55rem 1.1rem; border-radius:2px;
     color:var(--ivory-dim); transition:border-color 0.3s ease, color 0.3s ease;
+    text-decoration:none; display:inline-block;
   }
   .tag:hover{border-color:var(--gold); color:var(--gold-bright);}
+
+  /* ---------- INVENTORY ---------- */
+  .inventory-filters{display:flex; flex-wrap:wrap; gap:0.6rem; margin-top:2.2rem;}
+  .inv-filter{
+    font-family:var(--mono); font-size:0.74rem; letter-spacing:0.04em;
+    border:1px solid var(--line); padding:0.5rem 1rem; border-radius:2px;
+    color:var(--ivory-dim); background:transparent; cursor:pointer;
+    transition:border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
+  }
+  .inv-filter:hover{border-color:var(--gold); color:var(--gold-bright);}
+  .inv-filter.active{background:var(--gold); border-color:var(--gold); color:var(--void);}
+  .inventory-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:1.6rem; margin-top:2.2rem;}
+  .inv-card{border:1px solid var(--line); background:var(--void-2); overflow:hidden; transition:border-color 0.3s ease;}
+  .inv-card:hover{border-color:var(--gold);}
+  .inv-card .inv-img{
+    width:100%; aspect-ratio:4/3; background:linear-gradient(135deg, var(--void-2), var(--void));
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--serif); font-size:2rem; color:var(--line);
+  }
+  .inv-card .inv-img img{width:100%; height:100%; object-fit:cover; display:block;}
+  .inv-card .inv-body{padding:1.2rem 1.4rem;}
+  .inv-card .inv-category{font-family:var(--mono); font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold);}
+  .inv-card h3{font-size:1.2rem; font-weight:400; margin:0.5rem 0 0.5rem; color:var(--ivory);}
+  .inv-card p{font-size:0.86rem; line-height:1.55; color:var(--ivory-dim);}
+  .inventory-empty{font-family:var(--mono); font-size:0.86rem; color:var(--ivory-dim); margin-top:2rem;}
 
   /* ---------- TRADE ROUTES ---------- */
   .route-map{margin-top:3.2rem; max-width:760px;}
@@ -240,10 +280,12 @@
 
 <header>
   <div class="brand">Meridian</div>
+  <button class="menu-toggle" aria-label="Menu">☰</button>
   <nav>
     <a href="#about">Philosophy</a>
     <a href="#capabilities">Capabilities</a>
     <a href="#industries">Industries</a>
+    <a href="#inventory">Inventory</a>
     <a href="#sourcing">Sourcing</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -348,25 +390,33 @@
   <p class="eyebrow">03 — Industries</p>
   <h2 style="font-size:clamp(1.8rem,3.4vw,2.6rem); font-weight:400; max-width:680px;" class="reveal">Where we source.</h2>
   <div class="tag-cloud reveal">
-    <span class="tag">Consumer Products</span>
-    <span class="tag">Wellness</span>
-    <span class="tag">Solar</span>
-    <span class="tag">Electronics</span>
-    <span class="tag">Travel</span>
-    <span class="tag">Outdoor</span>
-    <span class="tag">Jewelry</span>
-    <span class="tag">Gemstones</span>
-    <span class="tag">Board &amp; Card Games</span>
-    <span class="tag">Manufacturing (OEM / ODM)</span>
-    <span class="tag">Education Supplies</span>
-    <span class="tag">Emergency Supplies</span>
-    <span class="tag">Infrastructure</span>
-    <span class="tag">Custom Manufacturing</span>
+    <a class="tag" href="#inventory" data-category="Consumer Products">Consumer Products</a>
+    <a class="tag" href="#inventory" data-category="Wellness">Wellness</a>
+    <a class="tag" href="#inventory" data-category="Solar">Solar</a>
+    <a class="tag" href="#inventory" data-category="Electronics">Electronics</a>
+    <a class="tag" href="#inventory" data-category="Travel">Travel</a>
+    <a class="tag" href="#inventory" data-category="Outdoor">Outdoor</a>
+    <a class="tag" href="#inventory" data-category="Jewelry">Jewelry</a>
+    <a class="tag" href="#inventory" data-category="Gemstones">Gemstones</a>
+    <a class="tag" href="#inventory" data-category="Board &amp; Card Games">Board &amp; Card Games</a>
+    <a class="tag" href="#inventory" data-category="Manufacturing (OEM / ODM)">Manufacturing (OEM / ODM)</a>
+    <a class="tag" href="#inventory" data-category="Education Supplies">Education Supplies</a>
+    <a class="tag" href="#inventory" data-category="Emergency Supplies">Emergency Supplies</a>
+    <a class="tag" href="#inventory" data-category="Infrastructure">Infrastructure</a>
+    <a class="tag" href="#inventory" data-category="Custom Manufacturing">Custom Manufacturing</a>
   </div>
 </section>
 
+<section id="inventory" class="waypoint-section">
+  <p class="eyebrow">04 — Inventory</p>
+  <h2 style="font-size:clamp(1.8rem,3.4vw,2.6rem); font-weight:400; max-width:680px;" class="reveal">In stock, tested, and ready to move.</h2>
+  <div id="inventory-filters" class="inventory-filters reveal"></div>
+  <div id="inventory-grid" class="inventory-grid reveal"></div>
+  <p id="inventory-empty" class="inventory-empty" style="display:none;">No items in this category yet — check back soon, or use the sourcing form below to request it directly.</p>
+</section>
+
 <section id="sourcing" class="waypoint-section">
-  <p class="eyebrow">04 — Request Sourcing</p>
+  <p class="eyebrow">05 — Request Sourcing</p>
   <div class="sourcing-wrap">
     <div class="sourcing-copy reveal">
       <h2 style="font-size:clamp(1.8rem,3vw,2.3rem); font-weight:400; margin-bottom:1.2rem;">Don't see it in stock? We'll find it.</h2>
@@ -478,6 +528,83 @@
       btn.textContent = 'Submit Request';
     }
   });
+</script>
+
+<script>
+  // Hamburger menu
+  var menuToggle = document.querySelector('.menu-toggle');
+  var mainNav = document.querySelector('nav');
+  menuToggle.addEventListener('click', function() {
+    mainNav.classList.toggle('open');
+  });
+  document.querySelectorAll('nav a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      mainNav.classList.remove('open');
+    });
+  });
+</script>
+
+<script>
+  // Inventory
+  (async function() {
+    try {
+      const res = await fetch('/data/inventory.json');
+      const items = await res.json();
+
+      const filtersEl = document.getElementById('inventory-filters');
+      const gridEl = document.getElementById('inventory-grid');
+      const emptyEl = document.getElementById('inventory-empty');
+
+      const categories = ['All', ...new Set(items.map(function(i){ return i.category; }))];
+      let active = 'all';
+
+      categories.forEach(function(cat) {
+        const btn = document.createElement('button');
+        btn.className = 'inv-filter' + (cat === 'All' ? ' active' : '');
+        btn.dataset.category = cat === 'All' ? 'all' : cat;
+        btn.textContent = cat;
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.inv-filter').forEach(function(b){ b.classList.remove('active'); });
+          btn.classList.add('active');
+          active = btn.dataset.category;
+          render();
+        });
+        filtersEl.appendChild(btn);
+      });
+
+      function render() {
+        const filtered = active === 'all' ? items : items.filter(function(i){ return i.category === active; });
+        gridEl.innerHTML = filtered.map(function(item) {
+          const img = item.image
+            ? '<img src="' + item.image + '" alt="' + item.name + '">'
+            : item.name.charAt(0);
+          return '<div class="inv-card">'
+            + '<div class="inv-img">' + img + '</div>'
+            + '<div class="inv-body">'
+            + '<div class="inv-category">' + item.category + '</div>'
+            + '<h3>' + item.name + '</h3>'
+            + '<p>' + item.description + '</p>'
+            + '</div></div>';
+        }).join('');
+        emptyEl.style.display = filtered.length === 0 ? 'block' : 'none';
+      }
+
+      render();
+
+      // Industry tag clicks scroll + filter
+      document.querySelectorAll('.tag[data-category]').forEach(function(tag) {
+        tag.addEventListener('click', function() {
+          const cat = tag.dataset.category;
+          document.querySelectorAll('.inv-filter').forEach(function(btn) {
+            if (btn.dataset.category === cat) btn.click();
+          });
+        });
+      });
+
+    } catch(err) {
+      console.error('Inventory load error:', err);
+    }
+  })();
 </script>
 
 </body>
