@@ -131,6 +131,12 @@
     background-position:center center;
     background-repeat:no-repeat;
   }
+  @media (max-width:760px){
+    #hero{
+      background-position:30% center;
+      background-size:cover;
+    }
+  }
   .hero-mark{
     width:min(96px, 18vw); opacity:0.95; margin-bottom:1.8rem;
     filter:drop-shadow(0 0 24px rgba(201,162,75,0.35));
@@ -605,6 +611,18 @@
       console.error('Inventory load error:', err);
     }
   })();
+</script>
+
+<script>
+  // Fix Australia SVG hub coordinate on mobile (preserveAspectRatio="none" stretches differently)
+  if (window.innerWidth <= 760) {
+    document.querySelectorAll('.route-glow-overlay path').forEach(function(path) {
+      var d = path.getAttribute('d');
+      if (d && d.indexOf('810,500') !== -1) {
+        path.setAttribute('d', d.replace(/810,500/g, '760,470'));
+      }
+    });
+  }
 </script>
 
 </body>
