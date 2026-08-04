@@ -205,30 +205,8 @@
   }
   .tag:hover{border-color:var(--gold); color:var(--gold-bright);}
 
-  /* ---------- INVENTORY ---------- */
-  .inventory-filters{display:flex; flex-wrap:wrap; gap:0.6rem; margin-top:2.2rem;}
-  .inv-filter{
-    font-family:var(--mono); font-size:0.74rem; letter-spacing:0.04em;
-    border:1px solid var(--line); padding:0.5rem 1rem; border-radius:2px;
-    color:var(--ivory-dim); background:transparent; cursor:pointer;
-    transition:border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
-  }
-  .inv-filter:hover{border-color:var(--gold); color:var(--gold-bright);}
-  .inv-filter.active{background:var(--gold); border-color:var(--gold); color:var(--void);}
-  .inventory-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:1.6rem; margin-top:2.2rem;}
-  .inv-card{border:1px solid var(--line); background:var(--void-2); overflow:hidden; transition:border-color 0.3s ease;}
-  .inv-card:hover{border-color:var(--gold);}
-  .inv-card .inv-img{
-    width:100%; aspect-ratio:4/3; background:linear-gradient(135deg, var(--void-2), var(--void));
-    display:flex; align-items:center; justify-content:center;
-    font-family:var(--serif); font-size:2rem; color:var(--line);
-  }
-  .inv-card .inv-img img{width:100%; height:100%; object-fit:cover; display:block;}
-  .inv-card .inv-body{padding:1.2rem 1.4rem;}
-  .inv-card .inv-category{font-family:var(--mono); font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold);}
-  .inv-card h3{font-size:1.2rem; font-weight:400; margin:0.5rem 0 0.5rem; color:var(--ivory);}
-  .inv-card p{font-size:0.86rem; line-height:1.55; color:var(--ivory-dim);}
-  .inventory-empty{font-family:var(--mono); font-size:0.86rem; color:var(--ivory-dim); margin-top:2rem;}
+  /* ---------- CAPABILITY SUB-LISTS ---------- */
+  .cap-sub{font-family:var(--mono); font-size:0.72rem; letter-spacing:0.04em; color:var(--ivory-dim); margin-top:0.9rem;}
 
   /* ---------- TRADE ROUTES ---------- */
   .route-map{margin-top:3.2rem; max-width:760px;}
@@ -291,7 +269,7 @@
     <a href="#about">Philosophy</a>
     <a href="#capabilities">Capabilities</a>
     <a href="#industries">Industries</a>
-    <a href="#inventory" id="nav-inventory">Inventory</a>
+    <a href="inventory.html" id="nav-inventory">Inventory</a>
     <a href="#sourcing">Sourcing</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -299,7 +277,7 @@
 
 <section id="hero">
   <h1>MERIDIAN</h1>
-  <p class="hero-tag">Global sourcing, import/export, and trade infrastructure.<br><b>Source. Connect. Deliver.</b></p>
+  <p class="hero-tag"><b>Source. Connect. Deliver.</b><br>Global sourcing, import/export, and trade infrastructure.</p>
   <div class="hero-scroll">SCROLL</div>
   <svg class="route-glow-overlay" viewBox="0 0 1000 600" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -373,7 +351,7 @@
 
 <section id="about" class="waypoint-section">
   <p class="eyebrow">01 — Philosophy</p>
-  <p class="lede reveal">Meridian operates through <em>relationships before transactions</em>. Products move. Knowledge moves. Relationships move. Everything follows the trade route.</p>
+  <p class="lede reveal">Sources connect. Relationships form. Trade happens.</p>
   <div class="flow-words reveal">
     <span>Sourcing</span><span>Trade Routes</span><span>Logistics</span><span>Manufacturing</span><span>Delivery</span>
   </div>
@@ -381,53 +359,38 @@
 
 <section id="capabilities" class="waypoint-section">
   <p class="eyebrow">02 — Capabilities</p>
-  <h2 style="font-size:clamp(1.8rem,3.4vw,2.6rem); font-weight:400; max-width:680px;" class="reveal">A network built across six functions, operating as one.</h2>
+  <h2 style="font-size:clamp(1.8rem,3.4vw,2.6rem); font-weight:400; max-width:680px;" class="reveal">Six functions. One network.</h2>
   <div class="cap-grid reveal">
-    <div class="cap"><div class="num">I.</div><h3>Inventory</h3><p>Products we hold, import, and move ourselves — tested, proven, and ready to fulfill on demand.</p></div>
-    <div class="cap"><div class="num">II.</div><h3>Product Sourcing</h3><p>When a client needs something we don't stock, we research suppliers, evaluate manufacturers, and source on their behalf.</p></div>
-    <div class="cap"><div class="num">III.</div><h3>Manufacturing Network</h3><p>Relationships across apparel, jewelry, electronics, wellness, and private label — capabilities shown, suppliers kept proprietary.</p></div>
-    <div class="cap"><div class="num">IV.</div><h3>Trade Routes</h3><p>Trade as a network, not a single lane. Routes expand as demand grows, from established lanes into new ones.</p></div>
-    <div class="cap"><div class="num">V.</div><h3>Market Intelligence</h3><p>Observations become institutional knowledge. Purchasing decisions follow accumulated intelligence, not assumption.</p></div>
-    <div class="cap"><div class="num">VI.</div><h3>Government &amp; Municipal</h3><p>Sourcing for cities, school systems, agencies, and infrastructure — retail and institutional scale, both.</p></div>
+    <div class="cap"><div class="num">I.</div><h3>Inventory</h3><p>Products held, imported, and moved directly — ready to fulfill on demand.</p></div>
+    <div class="cap"><div class="num">II.</div><h3>Product Sourcing</h3><p>Sourcing products through global supplier and manufacturing relationships.</p></div>
+    <div class="cap"><div class="num">III.</div><h3>Manufacturing Network</h3><p>Direct manufacturing relationships, built and maintained on the client's behalf.</p></div>
+    <div class="cap"><div class="num">IV.</div><h3>Trade Routes</h3><p>Global trade routes connecting suppliers, manufacturers, and buyers.</p></div>
+    <div class="cap"><div class="num">V.</div><h3>Market Intelligence</h3><p>Market intelligence for sourcing, procurement, and purchasing decisions.</p><div class="cap-sub">Supplier research / Product evaluation / Market observation</div></div>
+    <div class="cap"><div class="num">VI.</div><h3>Government &amp; Municipal</h3><p>Procurement support for government, municipal, and institutional buyers.</p><div class="cap-sub">Cities / School systems / Agencies / Infrastructure projects</div></div>
   </div>
 </section>
 
 <section id="industries" class="waypoint-section">
   <p class="eyebrow">03 — Industries</p>
-  <h2 style="font-size:clamp(1.8rem,3.4vw,2.6rem); font-weight:400; max-width:680px;" class="reveal">Where we source.</h2>
+  <h2 style="font-size:clamp(1.8rem,3.4vw,2.6rem); font-weight:400; max-width:680px;" class="reveal">Products and sourcing across multiple sectors.</h2>
   <div class="tag-cloud reveal">
-    <a class="tag" href="#inventory" data-category="Consumer Products">Consumer Products</a>
-    <a class="tag" href="#inventory" data-category="Wellness">Wellness</a>
-    <a class="tag" href="#inventory" data-category="Solar">Solar</a>
-    <a class="tag" href="#inventory" data-category="Electronics">Electronics</a>
-    <a class="tag" href="#inventory" data-category="Travel">Travel</a>
-    <a class="tag" href="#inventory" data-category="Outdoor">Outdoor</a>
-    <a class="tag" href="#inventory" data-category="Jewelry">Jewelry</a>
-    <a class="tag" href="#inventory" data-category="Gemstones">Gemstones</a>
-    <a class="tag" href="#inventory" data-category="Board &amp; Card Games">Board &amp; Card Games</a>
-    <a class="tag" href="#inventory" data-category="Manufacturing (OEM / ODM)">Manufacturing (OEM / ODM)</a>
-    <a class="tag" href="#inventory" data-category="Education Supplies">Education Supplies</a>
-    <a class="tag" href="#inventory" data-category="Emergency Supplies">Emergency Supplies</a>
-    <a class="tag" href="#inventory" data-category="Infrastructure">Infrastructure</a>
-    <a class="tag" href="#inventory" data-category="Custom Manufacturing">Custom Manufacturing</a>
+    <span class="tag">Apparel</span>
+    <span class="tag">Technology</span>
+    <span class="tag">Wellness</span>
+    <span class="tag">Jewelry</span>
+    <span class="tag">Materials</span>
+    <span class="tag">Private label</span>
   </div>
 </section>
 
-<section id="inventory" class="waypoint-section">
-  <p class="eyebrow">04 — Inventory</p>
-  <h2 style="font-size:clamp(1.8rem,3.4vw,2.6rem); font-weight:400; max-width:680px;" class="reveal">In stock, tested, and ready to move.</h2>
-  <div id="inventory-filters" class="inventory-filters reveal"></div>
-  <div id="inventory-grid" class="inventory-grid reveal"></div>
-  <p id="inventory-empty" class="inventory-empty" style="display:none;">No items in this category yet — check back soon, or use the sourcing form below to request it directly.</p>
-</section>
-
 <section id="sourcing" class="waypoint-section">
-  <p class="eyebrow">05 — Request Sourcing</p>
+  <p class="eyebrow">04 — Request Sourcing</p>
   <div class="sourcing-wrap">
     <div class="sourcing-copy reveal">
-      <h2 style="font-size:clamp(1.8rem,3vw,2.3rem); font-weight:400; margin-bottom:1.2rem;">Don't see it in stock? We'll find it.</h2>
-      <p>If it can be manufactured, sourced, imported, or delivered — it's in range. Tell us what you need and where it needs to go. We'll research suppliers, obtain quotations, and come back with a plan.</p>
-      <p>Institutional buyers — cities, school systems, agencies — reach out directly for procurement-scale sourcing.</p>
+      <h2 style="font-size:clamp(1.8rem,3vw,2.3rem); font-weight:400; margin-bottom:1.2rem;">Request Sourcing</h2>
+      <p>Tell us what you need and where it needs to go.</p>
+      <div class="cap-sub" style="margin-bottom:1.2rem;">Product sourcing / Manufacturing requests / Import/export requests / Procurement support</div>
+      <p>Institutional buyers: reach out directly for procurement-scale sourcing.</p>
     </div>
     <form id="sourcing-form" class="reveal">
       <div class="field"><label>Name</label><input type="text" name="name" required></div>
@@ -442,13 +405,13 @@
 
 <footer id="contact">
   <div>
-    <div class="fmark">MERIDIAN</div>
-    <div class="fmeta" style="margin-top:0.6rem;">Global Trade Network<br>Source · Connect · Deliver</div>
+    <div class="fmark">MERIDIAN GLOBAL</div>
+    <div class="fmeta" style="margin-top:0.6rem;">Source · Connect · Deliver</div>
   </div>
   <div class="fmeta">
     General Inquiries — info@meridiangtn.com<br>
     Sourcing Requests — see form above<br>
-    © 2026 Meridian
+    © 2026 Meridian Global Trade Network LLC
   </div>
 </footer>
 
@@ -548,78 +511,6 @@
       mainNav.classList.remove('open');
     });
   });
-</script>
-
-<script>
-  // Inventory
-  (async function() {
-    try {
-      const res = await fetch('/data/inventory.json');
-      const items = await res.json();
-
-      const navLink = document.getElementById('nav-inventory');
-      if (items.length === 0) {
-        document.getElementById('inventory').style.display = 'none';
-        if (navLink) navLink.style.display = 'none';
-        return;
-      }
-      if (navLink) navLink.style.display = '';
-      document.getElementById('inventory').style.display = '';
-
-      const filtersEl = document.getElementById('inventory-filters');
-      const gridEl = document.getElementById('inventory-grid');
-      const emptyEl = document.getElementById('inventory-empty');
-
-      const categories = ['All', ...new Set(items.map(function(i){ return i.category; }))];
-      let active = 'all';
-
-      categories.forEach(function(cat) {
-        const btn = document.createElement('button');
-        btn.className = 'inv-filter' + (cat === 'All' ? ' active' : '');
-        btn.dataset.category = cat === 'All' ? 'all' : cat;
-        btn.textContent = cat;
-        btn.addEventListener('click', function() {
-          document.querySelectorAll('.inv-filter').forEach(function(b){ b.classList.remove('active'); });
-          btn.classList.add('active');
-          active = btn.dataset.category;
-          render();
-        });
-        filtersEl.appendChild(btn);
-      });
-
-      function render() {
-        const filtered = active === 'all' ? items : items.filter(function(i){ return i.category === active; });
-        gridEl.innerHTML = filtered.map(function(item) {
-          const img = item.image
-            ? '<img src="' + item.image + '" alt="' + item.name + '">'
-            : item.name.charAt(0);
-          return '<div class="inv-card">'
-            + '<div class="inv-img">' + img + '</div>'
-            + '<div class="inv-body">'
-            + '<div class="inv-category">' + item.category + '</div>'
-            + '<h3>' + item.name + '</h3>'
-            + '<p>' + item.description + '</p>'
-            + '</div></div>';
-        }).join('');
-        emptyEl.style.display = filtered.length === 0 ? 'block' : 'none';
-      }
-
-      render();
-
-      // Industry tag clicks scroll + filter
-      document.querySelectorAll('.tag[data-category]').forEach(function(tag) {
-        tag.addEventListener('click', function() {
-          const cat = tag.dataset.category;
-          document.querySelectorAll('.inv-filter').forEach(function(btn) {
-            if (btn.dataset.category === cat) btn.click();
-          });
-        });
-      });
-
-    } catch(err) {
-      console.error('Inventory load error:', err);
-    }
-  })();
 </script>
 
 <script>
